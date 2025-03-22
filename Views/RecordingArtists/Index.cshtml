@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MusicCollectionManager.ViewModels.ArtistViewModel>
+
+@{
+    ViewData["Title"] = "Recording Artists";
+}
+
+<h1>Recording Artists Table</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="ArtistSearchResults">
+    <div class="form-group">
+        <input name="LastName" class="form-control" style="width: 200px; display: inline" />
+        <input type="submit" value="Search by Last Name" class="btn btn-primary" style="display: inline" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Artist ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Stage Name</th>
+            <th>Band Name</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BandName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ArtistID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ArtistID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>Total results: @Model.Count()</p>

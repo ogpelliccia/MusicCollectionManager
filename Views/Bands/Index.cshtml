@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MusicCollectionManager.Models.Band>
+
+@{
+    ViewData["Title"] = "Bands";
+}
+
+<h1>Bands Table</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="BandSearchResults">
+    <div class="form-group">
+        <input name="BandName" class="form-control" style="width: 200px; display: inline" />
+        <input type="submit" value="Search" class="btn btn-primary" style="display: inline" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BandID)
+            </th>
+            <th>
+                <a href="Groups" target="_blank">GroupID</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearFormed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearDisbanded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BandID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearFormed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearDisbanded)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BandID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BandID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BandID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>Total results: @Model.Count()</p>

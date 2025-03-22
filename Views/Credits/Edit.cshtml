@@ -1,0 +1,46 @@
+﻿@model MusicCollectionManager.Models.Credit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Credit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CreditID" />
+            <div class="form-group">
+                <label asp-for="MusicianID" class="control-label"></label>
+                <input asp-for="MusicianID" class="form-control" />
+                <span asp-validation-for="MusicianID" class="text-danger"></span>
+                <a href="../../Musicians" target="_blank">Go to Musicians Table</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditType" class="control-label"></label>
+                <input asp-for="CreditType" class="form-control" />
+                <span asp-validation-for="CreditType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumID" class="control-label"></label>
+                <input asp-for="AlbumID" class="form-control" />
+                <span asp-validation-for="AlbumID" class="text-danger"></span>
+                <a href="../../Albums" target="_blank">Go to Albums Table</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,65 @@
+﻿@model MusicCollectionManager.Models.Album
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Album</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AlbumName" class="control-label"></label>
+                <input asp-for="AlbumName" class="form-control" />
+                <span asp-validation-for="AlbumName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtistID" class="control-label">ArtistID (optional)</label>
+                <input asp-for="ArtistID" class="form-control" />
+                <span asp-validation-for="ArtistID" class="text-danger"></span>
+                <a href="../RecordingArtists" target="_blank">Go to Artists Table</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupID" class="control-label">GroupID (optional)</label>
+                <input asp-for="GroupID" class="form-control" />
+                <span asp-validation-for="GroupID" class="text-danger"></span>
+                <a href="../Groups" target="_blank">Go to Groups Table</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordLabel" class="control-label"></label>
+                <input asp-for="RecordLabel" class="form-control" />
+                <span asp-validation-for="RecordLabel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfSongs" class="control-label"></label>
+                <input asp-for="NumOfSongs" class="form-control" />
+                <span asp-validation-for="NumOfSongs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalDuration" class="control-label"></label>
+                <input asp-for="TotalDuration" class="form-control" />
+                <span asp-validation-for="TotalDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

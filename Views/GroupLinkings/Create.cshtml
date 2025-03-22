@@ -1,0 +1,40 @@
+﻿@model MusicCollectionManager.Models.GroupLinking
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>GroupLinking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ArtistID" class="control-label"></label>
+                <input asp-for="ArtistID" class="form-control" />
+                <span asp-validation-for="ArtistID" class="text-danger"></span>
+                <a href="../RecordingArtists" target="_blank">Go to Artists Table</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupID" class="control-label"></label>
+                <input asp-for="GroupID" class="form-control" />
+                <span asp-validation-for="GroupID" class="text-danger"></span>
+                <a href="../Groups" target="_blank">Go to Groups Table</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

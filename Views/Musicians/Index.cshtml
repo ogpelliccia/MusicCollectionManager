@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MusicCollectionManager.Models.Musician>
+
+@{
+    ViewData["Title"] = "Musicians";
+}
+
+<h1>Musicians Table</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="MusicianSearchResults">
+    <div class="form-group">
+        <input name="LastName" class="form-control" style="width: 200px; display: inline" />
+        <input type="submit" value="Search by Last Name" class="btn btn-primary" style="display: inline" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MusicianID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfDeath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hometown)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ethnicity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimaryOccupation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MusicianID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfDeath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hometown)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ethnicity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryOccupation)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MusicianID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MusicianID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MusicianID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>Total results: @Model.Count()</p>

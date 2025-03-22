@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MusicCollectionManager.ViewModels.AlbumViewModel>
+
+@{
+    ViewData["Title"] = "Albums";
+}
+
+<h1>Albums Table</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action = "AlbumSearchResults">
+    <div class="form-group">
+        <input name="AlbumName" class="form-control" style="width: 200px; display: inline" />
+        <input type="submit" value="Search by Album Name" class="btn btn-primary" style="display: inline"/>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Album ID
+            </th>
+            <th>
+                Album Name
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Stage Name
+            </th>
+            <th>
+                Band Name
+            </th>
+            <th>
+                Record Label
+            </th>
+            <th>
+                Year Released
+            </th>
+            <th>
+                Number of Songs
+            </th>
+            <th>
+                Total Duration
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordLabel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfSongs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalDuration)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AlbumID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AlbumID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AlbumID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>Total results: @Model.Count()</p>
